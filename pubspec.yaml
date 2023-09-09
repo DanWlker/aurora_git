@@ -1,0 +1,26 @@
+name: aurora_git
+description: A Git GUI built with Flutter.
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.1 <4.0.0"
+dependencies:
+  cupertino_icons: ^1.0.2
+  fluent_ui: ^4.7.3
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.4.0
+  libgit2dart:
+    git:
+      url: https://github.com/SkinnyMind/libgit2dart.git
+      ref: b66662f33cfbe2fd4881f63775fa44ae12961afa
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^5.1.0
+
+flutter:
+  uses-material-design: true

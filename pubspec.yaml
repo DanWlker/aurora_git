@@ -16,6 +16,8 @@ dependencies:
     git:
       url: https://github.com/SkinnyMind/libgit2dart.git
       ref: b66662f33cfbe2fd4881f63775fa44ae12961afa
+  package_info_plus: ^4.1.0
+  window_manager: ^0.3.6
 
 dev_dependencies:
   flutter_test:

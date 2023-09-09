@@ -1,7 +1,28 @@
+import 'package:aurora_git/global_variables.dart';
+import 'package:aurora_git/repo_list/repo_list_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:libgit2dart/libgit2dart.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+  packageVersion = (await PackageInfo.fromPlatform()).version;
+
+  const windowOptions = WindowOptions(
+    size: Size(450, 750),
+    center: true,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.hidden,
+    windowButtonVisibility: true,
+  );
+
+  await windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.show();
+    await windowManager.focus();
+  });
+
   runApp(const MyApp());
 }
 
@@ -17,40 +38,7 @@ class MyApp extends StatelessWidget {
       darkTheme: FluentThemeData(
         brightness: Brightness.dark,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    required this.title,
-    super.key,
-  });
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return NavigationView(
-      appBar: NavigationAppBar(
-        title: Text(Libgit2.version),
-      ),
-      content: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Welcome to aurora git',
-            ),
-          ],
-        ),
-      ),
+      home: const RepoListPage(),
     );
   }
 }

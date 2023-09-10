@@ -10,7 +10,7 @@ void main() async {
   packageVersion = (await PackageInfo.fromPlatform()).version;
 
   const windowOptions = WindowOptions(
-    size: Size(450, 750),
+    size: Size(600, 750),
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,

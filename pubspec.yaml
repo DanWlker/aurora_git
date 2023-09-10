@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.1.1 <4.0.0"
 dependencies:
   cupertino_icons: ^1.0.2
+  file_picker: ^5.5.0
   fluent_ui: ^4.7.3
   flutter:
     sdk: flutter
@@ -17,6 +18,7 @@ dependencies:
       url: https://github.com/SkinnyMind/libgit2dart.git
       ref: b66662f33cfbe2fd4881f63775fa44ae12961afa
   package_info_plus: ^4.1.0
+  path_provider: ^2.1.1
   window_manager: ^0.3.6
 
 dev_dependencies:

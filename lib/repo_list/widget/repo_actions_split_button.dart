@@ -1,3 +1,4 @@
+import 'package:aurora_git/shared/dialog/clone_repo_dialog.dart/show_clone_repo_dialog.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class RepoActionsSplitButton extends StatelessWidget {
@@ -32,7 +33,9 @@ class RepoActionsSplitButton extends StatelessWidget {
           ),
         ],
       ),
-      onInvoked: () {},
+      onInvoked: () {
+        showCloneRepoDialog(context);
+      },
       child: const Padding(
         padding: EdgeInsets.symmetric(
           vertical: 6,

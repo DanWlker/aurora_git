@@ -26,7 +26,7 @@ class RepoActionsSplitButton extends StatelessWidget {
               children: [
                 Icon(FluentIcons.add),
                 SizedBox(width: 8),
-                Text('New'),
+                Text('Create'),
               ],
             ),
             onPressed: () {},

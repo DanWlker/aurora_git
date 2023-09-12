@@ -19,6 +19,7 @@ dependencies:
       ref: b66662f33cfbe2fd4881f63775fa44ae12961afa
   package_info_plus: ^4.1.0
   path_provider: ^2.1.1
+  shared_preferences: ^2.2.1
   window_manager: ^0.3.6
 
 dev_dependencies:

@@ -39,10 +39,7 @@ class _CloneRepoDialogWidgetBodyState extends State<CloneRepoDialogWidgetBody> {
         ),
         TableRow(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 16),
-              child: Text('Clone repository to:'),
-            ),
+            const Text('Clone to:'),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
@@ -75,7 +72,10 @@ class _CloneRepoDialogWidgetBodyState extends State<CloneRepoDialogWidgetBody> {
         ),
         TableRow(
           children: [
-            const Text('Repository name:'),
+            const Padding(
+              padding: EdgeInsets.only(right: 16),
+              child: Text('Repository name:'),
+            ),
             TextBox(
               controller: widget.repoNameController,
               //To refresh the folder path as you type

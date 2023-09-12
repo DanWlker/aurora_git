@@ -1,5 +1,5 @@
-import 'package:aurora_git/global_variables.dart';
 import 'package:aurora_git/repo_list/repo_list_page.dart';
+import 'package:aurora_git/shared/global_variables.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';

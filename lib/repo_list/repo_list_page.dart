@@ -1,6 +1,6 @@
-import 'package:aurora_git/global_variables.dart';
 import 'package:aurora_git/repo_list/widget/repo_actions_split_button.dart';
 import 'package:aurora_git/repo_list/widget/repo_list_section.dart';
+import 'package:aurora_git/shared/global_variables.dart';
 import 'package:aurora_git/shared/window_buttons.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:window_manager/window_manager.dart';

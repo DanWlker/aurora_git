@@ -70,14 +70,14 @@ class StorageManager {
     await (await _pref).clear();
   }
 
-  Future<void> setObject<T>({
+  static Future<void> setObject<T>({
     required StorageLabel label,
     required T value,
   }) async {
     await (await _pref).setString(label.name, jsonEncode(value));
   }
 
-  Future<T?> getObject<T>({
+  static Future<T?> getObject<T>({
     required StorageLabel label,
     required T Function(Map<String, dynamic> json) fromJson,
   }) async {
@@ -87,7 +87,7 @@ class StorageManager {
     return fromJson(jsonDecode(data) as Map<String, dynamic>);
   }
 
-  Future<void> setObjectList<T>({
+  static Future<void> setObjectList<T>({
     required StorageLabel label,
     required List<T> value,
   }) async {
@@ -100,7 +100,7 @@ class StorageManager {
     await (await _pref).setStringList(label.name, data);
   }
 
-  Future<List<T>?> getObjectList<T>({
+  static Future<List<T>?> getObjectList<T>({
     required StorageLabel label,
     required T Function(Map<String, dynamic> json) fromJson,
   }) async {

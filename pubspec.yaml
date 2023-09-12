@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.0
+  json_annotation: ^4.8.1
   libgit2dart:
     git:
       url: https://github.com/SkinnyMind/libgit2dart.git
@@ -20,11 +21,14 @@ dependencies:
   package_info_plus: ^4.1.0
   path_provider: ^2.1.1
   shared_preferences: ^2.2.1
+  shared_preferences_windows: ^2.3.1
   window_manager: ^0.3.6
 
 dev_dependencies:
+  build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.7.1
   very_good_analysis: ^5.1.0
 
 flutter:

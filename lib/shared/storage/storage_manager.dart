@@ -12,7 +12,7 @@ class StorageManager {
     await (await _pref).setBool(label.name, value);
   }
 
-  static Future<bool?> getBool(StorageLabel label) async {
+  static Future<bool?> getBool({required StorageLabel label}) async {
     return (await _pref).getBool(label.name);
   }
 
@@ -23,7 +23,7 @@ class StorageManager {
     await (await _pref).setString(label.name, value);
   }
 
-  static Future<String?> getString(StorageLabel label) async {
+  static Future<String?> getString({required StorageLabel label}) async {
     return (await _pref).getString(label.name);
   }
 
@@ -34,7 +34,7 @@ class StorageManager {
     await (await _pref).setInt(label.name, value);
   }
 
-  static Future<int?> getInt(StorageLabel label) async {
+  static Future<int?> getInt({required StorageLabel label}) async {
     return (await _pref).getInt(label.name);
   }
 
@@ -45,7 +45,7 @@ class StorageManager {
     await (await _pref).setDouble(label.name, value);
   }
 
-  static Future<double?> getDouble(StorageLabel label) async {
+  static Future<double?> getDouble({required StorageLabel label}) async {
     return (await _pref).getDouble(label.name);
   }
 
@@ -56,11 +56,13 @@ class StorageManager {
     await (await _pref).setStringList(label.name, value);
   }
 
-  static Future<List<String>?> getStringList(StorageLabel label) async {
+  static Future<List<String>?> getStringList({
+    required StorageLabel label,
+  }) async {
     return (await _pref).getStringList(label.name);
   }
 
-  static Future<void> remove(StorageLabel label) async {
+  static Future<void> remove({required StorageLabel label}) async {
     await (await _pref).remove(label.name);
   }
 
@@ -68,24 +70,27 @@ class StorageManager {
     await (await _pref).clear();
   }
 
-  Future<void> setObject<T>(StorageLabel label, T value) async {
+  Future<void> setObject<T>({
+    required StorageLabel label,
+    required T value,
+  }) async {
     await (await _pref).setString(label.name, jsonEncode(value));
   }
 
-  Future<T?> getObject<T>(
-    StorageLabel label,
-    T Function(Map<String, dynamic> json) fromJson,
-  ) async {
+  Future<T?> getObject<T>({
+    required StorageLabel label,
+    required T Function(Map<String, dynamic> json) fromJson,
+  }) async {
     final data = (await _pref).getString(label.name);
     if (data == null) return null;
 
     return fromJson(jsonDecode(data) as Map<String, dynamic>);
   }
 
-  Future<void> setObjectList<T>(
-    StorageLabel label,
-    List<T> value,
-  ) async {
+  Future<void> setObjectList<T>({
+    required StorageLabel label,
+    required List<T> value,
+  }) async {
     final data = <String>[];
 
     for (final element in value) {
@@ -95,10 +100,10 @@ class StorageManager {
     await (await _pref).setStringList(label.name, data);
   }
 
-  Future<List<T>?> getObjectList<T>(
-    StorageLabel label,
-    T Function(Map<String, dynamic> json) fromJson,
-  ) async {
+  Future<List<T>?> getObjectList<T>({
+    required StorageLabel label,
+    required T Function(Map<String, dynamic> json) fromJson,
+  }) async {
     final data = <T>[];
 
     final retrievedValues = (await _pref).getStringList(label.name);

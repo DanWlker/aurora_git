@@ -69,6 +69,7 @@ class _RepoListTileState extends ConsumerState<RepoListTile> {
                 MenuFlyoutItem(
                   leading: const Icon(FluentIcons.share),
                   text: const Text('Open in editor'),
+                  // TODO: Implement [Open in editor]
                   onPressed: () {},
                 ),
               ],

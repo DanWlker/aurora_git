@@ -12,7 +12,7 @@ class RepoListNotifier extends _$RepoListNotifier {
     try {
       Repository.open(repoPath);
     } catch (e) {
-      // TODO(DanWlker): Prompt error dialog
+      // TODO: Prompt error dialog, or throw it so it can be prompted in ui layer
       // Will throw error when is not a valid repo
       return;
     }

@@ -37,6 +37,8 @@ class CloneRepoDialogWidget extends ConsumerWidget {
               folderPathNameController.text,
               repoNameController.text,
             );
+
+            // TODO: Show loading spinner, not sure why the widget isn't rebuilding when progress updated in callback
             Repository.clone(
               url: urlLinkController.text,
               localPath: fullRepoPath,

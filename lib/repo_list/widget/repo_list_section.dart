@@ -60,6 +60,7 @@ class _RepoListSectionState extends ConsumerState<RepoListSection> {
             itemCount: data.length,
             itemBuilder: (item, index) => RepoListTile(
               repoFullPath: data[index].repoPath,
+              // TODO: Implement [onTap] for list tile, perhaps callback isn't required here
               onTap: () {},
             ),
           ),

@@ -1,11 +1,17 @@
+import 'package:aurora_git/repo_list/entity/repo_entity.dart';
+import 'package:aurora_git/repo_list/model/repo_list_notifier.dart';
 import 'package:aurora_git/shared/dialog/clone_repo_dialog.dart/show_clone_repo_dialog.dart';
+import 'package:aurora_git/shared/storage/storage_label.dart';
+import 'package:aurora_git/shared/storage/storage_manager.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RepoActionsSplitButton extends StatelessWidget {
+class RepoActionsSplitButton extends ConsumerWidget {
   const RepoActionsSplitButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SplitButton(
       flyout: MenuFlyout(
         items: [
@@ -18,7 +24,16 @@ class RepoActionsSplitButton extends StatelessWidget {
                 Text('Open'),
               ],
             ),
-            onPressed: () {},
+            onPressed: () async {
+              final selectedDirectory =
+                  await FilePicker.platform.getDirectoryPath();
+
+              if (selectedDirectory == null) return;
+
+              await ref
+                  .read(repoListNotifierProvider.notifier)
+                  .addRepo(RepoEntity(repoPath: selectedDirectory));
+            },
           ),
           MenuFlyoutItem(
             text: const Row(

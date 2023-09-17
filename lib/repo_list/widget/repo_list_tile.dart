@@ -1,6 +1,11 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'dart:io';
 
-class RepoListTile extends StatefulWidget {
+import 'package:aurora_git/repo_list/model/repo_list_notifier.dart';
+import 'package:aurora_git/shared/dialog/show_delete_repo_dialog.dart';
+import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class RepoListTile extends ConsumerStatefulWidget {
   const RepoListTile({
     required this.repoFullPath,
     required this.onTap,
@@ -11,15 +16,15 @@ class RepoListTile extends StatefulWidget {
   final VoidCallback onTap;
 
   @override
-  State<RepoListTile> createState() => _RepoListTileState();
+  ConsumerState<RepoListTile> createState() => _RepoListTileState();
 }
 
-class _RepoListTileState extends State<RepoListTile> {
+class _RepoListTileState extends ConsumerState<RepoListTile> {
   final contextController = FlyoutController();
 
   @override
   Widget build(BuildContext context) {
-    final repoName = widget.repoFullPath.split('/').last;
+    final repoName = widget.repoFullPath.split(Platform.pathSeparator).last;
 
     return GestureDetector(
       onSecondaryTapUp: (d) {
@@ -38,6 +43,29 @@ class _RepoListTileState extends State<RepoListTile> {
           builder: (context) {
             return MenuFlyout(
               items: [
+                MenuFlyoutItem(
+                  leading: const Icon(FluentIcons.delete),
+                  text: const Text('Delete'),
+                  onPressed: () {
+                    final currentNavigator = Navigator.of(context);
+                    () async {
+                      final shouldDelete = await showDeleteConfirmationDialog(
+                        context: context,
+                        title: 'Delete repo from list?',
+                        content:
+                            'Note: This does not remove the repo from your computer, only from the list.',
+                      );
+
+                      if (shouldDelete) {
+                        await ref
+                            .read(repoListNotifierProvider.notifier)
+                            .removeRepo(widget.repoFullPath);
+                      }
+
+                      currentNavigator.pop();
+                    }();
+                  },
+                ),
                 MenuFlyoutItem(
                   leading: const Icon(FluentIcons.share),
                   text: const Text('Open in editor'),

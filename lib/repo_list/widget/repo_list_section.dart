@@ -1,28 +1,54 @@
+import 'package:aurora_git/repo_list/model/repo_list_notifier.dart';
 import 'package:aurora_git/repo_list/widget/repo_list_tile.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RepoListSection extends StatefulWidget {
+class RepoListSection extends ConsumerStatefulWidget {
   const RepoListSection({
     super.key,
   });
 
   @override
-  State<RepoListSection> createState() => _RepoListSectionState();
+  ConsumerState<RepoListSection> createState() => _RepoListSectionState();
 }
 
-class _RepoListSectionState extends State<RepoListSection> {
+class _RepoListSectionState extends ConsumerState<RepoListSection> {
   final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      controller: scrollController,
-      child: ListView.builder(
-        controller: scrollController,
-        itemCount: 100,
-        itemBuilder: (item, index) => RepoListTile(
-          repoFullPath: 'C:/Users/Daniel/projects/digital_bank_flutter_app2',
-          onTap: () {},
+    final repoListAsyncValue = ref.watch(repoListNotifierProvider);
+
+    return repoListAsyncValue.when(
+      data: (data) => data.isEmpty
+          ? Center(
+              child: Text(
+                'Nothing here yet...',
+                style: Typography.fromBrightness(
+                  brightness: FluentTheme.of(context).brightness,
+                  color: Colors.grey[80],
+                ).bodyLarge,
+              ),
+            )
+          : Scrollbar(
+              controller: scrollController,
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount: data.length,
+                itemBuilder: (item, index) => RepoListTile(
+                  repoFullPath: data[index].repoPath,
+                  onTap: () {},
+                ),
+              ),
+            ),
+      error: (_, __) => const Center(
+        child: Text('is error'),
+      ),
+      loading: () => const Center(
+        child: SizedBox(
+          height: 40,
+          width: 40,
+          child: ProgressRing(),
         ),
       ),
     );

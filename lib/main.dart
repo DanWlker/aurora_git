@@ -1,6 +1,7 @@
 import 'package:aurora_git/repo_list/repo_list_page.dart';
 import 'package:aurora_git/shared/global_variables.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -24,7 +25,7 @@ void main() async {
     await windowManager.focus();
   });
 
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-      title: 'Flutter Demo',
+      title: 'Aurora Git',
       themeMode: ThemeMode.dark,
       darkTheme: FluentThemeData(
         brightness: Brightness.dark,

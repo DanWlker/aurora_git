@@ -20,15 +20,19 @@ dependencies:
       ref: b66662f33cfbe2fd4881f63775fa44ae12961afa
   package_info_plus: ^4.1.0
   path_provider: ^2.1.1
+  riverpod_annotation: ^2.1.5
   shared_preferences: ^2.2.1
   shared_preferences_windows: ^2.3.1
   window_manager: ^0.3.6
 
 dev_dependencies:
   build_runner: ^2.4.6
+  custom_lint: ^0.5.3
   flutter_test:
     sdk: flutter
   json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.2
+  riverpod_lint: ^2.1.0
   very_good_analysis: ^5.1.0
 
 flutter:

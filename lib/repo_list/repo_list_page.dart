@@ -5,15 +5,8 @@ import 'package:aurora_git/shared/window_buttons.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:window_manager/window_manager.dart';
 
-class RepoListPage extends StatefulWidget {
+class RepoListPage extends StatelessWidget {
   const RepoListPage({super.key});
-
-  @override
-  State<RepoListPage> createState() => _RepoListPageState();
-}
-
-class _RepoListPageState extends State<RepoListPage> {
-  bool isEmpty = true;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +26,12 @@ class _RepoListPageState extends State<RepoListPage> {
         ),
         actions: const WindowButtons(),
       ),
-      content: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+      content: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 8),
-            const Row(
+            SizedBox(height: 8),
+            Row(
               children: [
                 RepoActionsSplitButton(),
                 SizedBox(width: 16),
@@ -56,19 +49,9 @@ class _RepoListPageState extends State<RepoListPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Expanded(
-              child: isEmpty
-                  ? Center(
-                      child: Text(
-                        'Nothing here yet...',
-                        style: Typography.fromBrightness(
-                          brightness: FluentTheme.of(context).brightness,
-                          color: Colors.grey[80],
-                        ).bodyLarge,
-                      ),
-                    )
-                  : const RepoListSection(),
+              child: RepoListSection(),
             ),
           ],
         ),

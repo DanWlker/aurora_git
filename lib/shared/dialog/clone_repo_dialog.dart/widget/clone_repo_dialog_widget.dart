@@ -1,7 +1,6 @@
-import 'package:aurora_git/repo_list/entity/repo_entity.dart';
-import 'package:aurora_git/repo_list/model/repo_list_notifier.dart';
 import 'package:aurora_git/shared/dialog/clone_repo_dialog.dart/service/clone_repo_helper.dart';
 import 'package:aurora_git/shared/dialog/clone_repo_dialog.dart/widget/clone_repo_dialog_widget_body.dart';
+import 'package:aurora_git/shared/provider/repo_list_notifier/repo_list_notifier.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:libgit2dart/libgit2dart.dart';
@@ -45,7 +44,7 @@ class CloneRepoDialogWidget extends ConsumerWidget {
 
             // Add the repo
             ref.read(repoListNotifierProvider.notifier).addRepo(
-                  RepoEntity(repoPath: fullRepoPath),
+                  fullRepoPath,
                 );
 
             Navigator.pop(context);

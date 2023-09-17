@@ -1,15 +1,30 @@
 import 'package:aurora_git/repo_list/entity/repo_entity.dart';
 import 'package:aurora_git/shared/storage/storage_label.dart';
 import 'package:aurora_git/shared/storage/storage_manager.dart';
+import 'package:libgit2dart/libgit2dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'repo_list_notifier.g.dart';
 
 @riverpod
 class RepoListNotifier extends _$RepoListNotifier {
-  Future<void> addRepo(RepoEntity repoEntity) async {
+  Future<void> addRepo(String repoPath) async {
+    try {
+      Repository.open(repoPath);
+    } catch (e) {
+      // TODO(DanWlker): Prompt error dialog
+      // Will throw error when is not a valid repo
+      return;
+    }
+
     final futureState = await future;
-    futureState.add(repoEntity);
+
+    //Prevent duplicates
+    for (final element in futureState) {
+      if (element.repoPath == repoPath) return;
+    }
+
+    futureState.add(RepoEntity(repoPath: repoPath));
 
     await StorageManager.setObjectList(
       label: StorageLabel.repoList,

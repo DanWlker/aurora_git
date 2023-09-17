@@ -1,8 +1,5 @@
-import 'package:aurora_git/repo_list/entity/repo_entity.dart';
-import 'package:aurora_git/repo_list/model/repo_list_notifier.dart';
 import 'package:aurora_git/shared/dialog/clone_repo_dialog.dart/show_clone_repo_dialog.dart';
-import 'package:aurora_git/shared/storage/storage_label.dart';
-import 'package:aurora_git/shared/storage/storage_manager.dart';
+import 'package:aurora_git/shared/provider/repo_list_notifier/repo_list_notifier.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +29,7 @@ class RepoActionsSplitButton extends ConsumerWidget {
 
               await ref
                   .read(repoListNotifierProvider.notifier)
-                  .addRepo(RepoEntity(repoPath: selectedDirectory));
+                  .addRepo(selectedDirectory);
             },
           ),
           MenuFlyoutItem(

@@ -6,7 +6,7 @@ part of 'repo_list_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$repoListNotifierHash() => r'9bce6ddde6beca62e953a7dfda7f046b4dd00d0a';
+String _$repoListNotifierHash() => r'c812678e0350fb28ae5d3456890887987f5cfde2';
 
 /// See also [RepoListNotifier].
 @ProviderFor(RepoListNotifier)

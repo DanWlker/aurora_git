@@ -21,15 +21,20 @@ class RepoActionsSplitButton extends ConsumerWidget {
                 Text('Open'),
               ],
             ),
-            onPressed: () async {
-              final selectedDirectory =
-                  await FilePicker.platform.getDirectoryPath();
+            onPressed: () {
+              final currentNavigator = Navigator.of(context);
+              () async {
+                final selectedDirectory =
+                    await FilePicker.platform.getDirectoryPath();
 
-              if (selectedDirectory == null) return;
+                if (selectedDirectory == null) return;
 
-              await ref
-                  .read(repoListNotifierProvider.notifier)
-                  .addRepo(selectedDirectory);
+                await ref
+                    .read(repoListNotifierProvider.notifier)
+                    .addRepo(selectedDirectory);
+
+                currentNavigator.pop();
+              }();
             },
           ),
           MenuFlyoutItem(
@@ -39,6 +44,17 @@ class RepoActionsSplitButton extends ConsumerWidget {
                 Icon(FluentIcons.add),
                 SizedBox(width: 8),
                 Text('Create'),
+              ],
+            ),
+            onPressed: () {},
+          ),
+          MenuFlyoutItem(
+            text: const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(FluentIcons.fabric_folder_search),
+                SizedBox(width: 8),
+                Text('Scan subfolders'),
               ],
             ),
             onPressed: () {},

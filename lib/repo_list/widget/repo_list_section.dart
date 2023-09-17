@@ -31,7 +31,11 @@ class _RepoListSectionState extends ConsumerState<RepoListSection> {
             .where(
               (element) =>
                   filterRepoListKeyword.trim().isEmpty ||
-                  element.repoPath.split(Platform.pathSeparator).last.contains(
+                  element.repoPath
+                      .split(Platform.pathSeparator)
+                      .last
+                      .toLowerCase()
+                      .contains(
                         filterRepoListKeyword.trim().toLowerCase(),
                       ),
             )
@@ -62,7 +66,7 @@ class _RepoListSectionState extends ConsumerState<RepoListSection> {
         );
       },
       error: (_, __) => const Center(
-        child: Text('is error'),
+        child: Text('Sorry... Something went wrong ><'),
       ),
       loading: () => const Center(
         child: SizedBox(

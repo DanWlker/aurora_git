@@ -45,15 +45,15 @@ class _RepoListTileState extends ConsumerState<RepoListTile> {
               items: [
                 MenuFlyoutItem(
                   leading: const Icon(FluentIcons.delete),
-                  text: const Text('Delete'),
+                  text: const Text('Remove'),
                   onPressed: () {
                     final currentNavigator = Navigator.of(context);
                     () async {
                       final shouldDelete = await showDeleteConfirmationDialog(
                         context: context,
-                        title: 'Delete repo from list?',
+                        title: 'Remove repo from list?',
                         content:
-                            'Note: This does not remove the repo from your computer, only from the list.',
+                            'Note: This does not delete the repo from your device, only from the list.',
                       );
 
                       if (shouldDelete) {

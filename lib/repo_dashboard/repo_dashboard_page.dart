@@ -19,18 +19,133 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
     return NavigationView(
       appBar: NavigationAppBar(
         automaticallyImplyLeading: false,
-        title: DragToMoveArea(
-          child: Align(
-            alignment: AlignmentDirectional.centerStart,
-            child: Text(
-              'Aurora Git v$packageVersion',
-              style: Typography.fromBrightness(
-                brightness: FluentTheme.of(context).brightness,
-              ).bodyStrong,
+        title: Column(
+          children: [
+            DragToMoveArea(
+              child: Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Aurora Git v$packageVersion',
+                      style: Typography.fromBrightness(
+                        brightness: FluentTheme.of(context).brightness,
+                      ).bodyStrong,
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.drill_down),
+                          Text('Fetch'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.drill_down_solid),
+                          Text('Pull'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.upload),
+                          Text('Push'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 40),
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.archive),
+                          Text('Stash'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 56,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.share),
+                          Text('Open in'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  onPressed: () {},
+                  icon: const SizedBox(
+                    width: 56,
+                    height: 40,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(FluentIcons.command_prompt),
+                          Text('Terminal'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
         actions: const WindowButtons(),
+        height: 104,
       ),
       pane: NavigationPane(
         selected: selectedIndex,

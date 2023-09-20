@@ -52,6 +52,7 @@ class BranchesTreeView extends PaneItemSeparator {
         content: Text(structure.name),
         value: currentFullPath,
         onInvoked: onInvoked,
+        // TODO: check why the root folder is expanded by default when it has folders in it
         expanded: pathToTreeViewItemMap[currentFullPath]?.expanded ?? false,
         children: [
           for (final childItem in structure.children)

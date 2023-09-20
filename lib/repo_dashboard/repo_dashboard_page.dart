@@ -190,6 +190,10 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
               ),
             ],
           ),
+          BranchesTreeView(
+            rootNodeName: 'Stash',
+            folderOrBranchList: [],
+          ),
         ],
       ),
     );

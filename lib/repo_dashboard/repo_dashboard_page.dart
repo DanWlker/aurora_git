@@ -172,6 +172,24 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
               ),
             ],
           ),
+          BranchesTreeView(
+            rootNodeName: 'Tags',
+            folderOrBranchList: [
+              BranchFolderStructure(
+                name: 'release',
+                children: [
+                  BranchFolderStructure(name: '1.0'),
+                  BranchFolderStructure(name: '1.0.2'),
+                ],
+              ),
+              BranchFolderStructure(
+                name: 'beta',
+                children: [
+                  BranchFolderStructure(name: '0.0.1'),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -10,6 +10,7 @@ class BranchesTreeView extends PaneItemSeparator {
   final List<BranchFolderStructure> folderOrBranchList;
   final String rootNodeName;
 
+  // TODO:  move selected branch and map to outside of build, or else state won't be preserved when switching pages, maybe need to use another map that stores expanded or not, not sure
   String? _selectedBranch;
   Map<String, TreeViewItem> pathToTreeViewItemMap = {};
 
@@ -42,6 +43,7 @@ class BranchesTreeView extends PaneItemSeparator {
       treeViewItem = TreeViewItem(
         content: Text(structure.name),
         value: currentFullPath,
+        selected: currentFullPath == _selectedBranch,
         onInvoked: onInvoked,
       );
     } else {
@@ -50,6 +52,7 @@ class BranchesTreeView extends PaneItemSeparator {
         content: Text(structure.name),
         value: currentFullPath,
         onInvoked: onInvoked,
+        expanded: pathToTreeViewItemMap[currentFullPath]?.expanded ?? false,
         children: [
           for (final childItem in structure.children)
             buildTreeView(childItem, parentPath: currentFullPath),
@@ -63,8 +66,6 @@ class BranchesTreeView extends PaneItemSeparator {
 
   @override
   Widget build(BuildContext context, Axis direction) {
-    pathToTreeViewItemMap = {};
-
     return KeyedSubtree(
       key: key,
       child: TreeView(

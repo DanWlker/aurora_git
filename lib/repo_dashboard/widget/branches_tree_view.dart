@@ -4,9 +4,11 @@ import 'package:fluent_ui/fluent_ui.dart';
 class BranchesTreeView extends PaneItemSeparator {
   BranchesTreeView({
     required this.folderOrBranchList,
+    required this.rootNodeName,
     super.key,
   });
   final List<BranchFolderStructure> folderOrBranchList;
+  final String rootNodeName;
 
   String? _selectedBranch;
   Map<String, TreeViewItem> pathToTreeViewItemMap = {};
@@ -69,8 +71,7 @@ class BranchesTreeView extends PaneItemSeparator {
         selectionMode: TreeViewSelectionMode.single,
         items: [
           TreeViewItem(
-            value: 'Branches',
-            content: const Text('Branches'),
+            content: Text(rootNodeName),
             onInvoked: onInvoked,
             children: [
               for (final folderOrBranch in folderOrBranchList)

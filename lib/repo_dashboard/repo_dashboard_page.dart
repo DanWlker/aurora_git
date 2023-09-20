@@ -109,17 +109,20 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
           ),
           PaneItemSeparator(),
           BranchesTreeView(
+            rootNodeName: 'Local Branches',
             folderOrBranchList: [
               BranchFolderStructure(
                 name: 'feature',
                 children: [
                   BranchFolderStructure(name: 'selected1'),
-                  BranchFolderStructure(name: 'selected2'),
                   BranchFolderStructure(
-                    name: 'selected3',
+                    name: 'selected2',
                     children: [
                       BranchFolderStructure(name: 'selected 3.5'),
                     ],
+                  ),
+                  BranchFolderStructure(
+                    name: 'selected3',
                   ),
                 ],
               ),
@@ -129,9 +132,40 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
                   BranchFolderStructure(name: 'selected1'),
                   BranchFolderStructure(name: 'selected2'),
                   BranchFolderStructure(
-                    name: 'selected3',
+                    name: 'folderx',
                     children: [
                       BranchFolderStructure(name: 'selected 4'),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          BranchesTreeView(
+            rootNodeName: 'Remotes',
+            folderOrBranchList: [
+              BranchFolderStructure(
+                name: 'origin1',
+                children: [
+                  BranchFolderStructure(name: 'selected1'),
+                  BranchFolderStructure(name: 'selected2'),
+                  BranchFolderStructure(
+                    name: 'feature',
+                    children: [
+                      BranchFolderStructure(name: 'selected 3'),
+                    ],
+                  ),
+                ],
+              ),
+              BranchFolderStructure(
+                name: 'origin2',
+                children: [
+                  BranchFolderStructure(name: 'selected1'),
+                  BranchFolderStructure(name: 'selected2'),
+                  BranchFolderStructure(
+                    name: 'feature',
+                    children: [
+                      BranchFolderStructure(name: 'selected 3'),
                     ],
                   ),
                 ],

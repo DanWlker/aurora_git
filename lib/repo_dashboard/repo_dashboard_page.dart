@@ -1,3 +1,6 @@
+import 'package:aurora_git/repo_dashboard/domain/branch_folder_structure.dart';
+import 'package:aurora_git/repo_dashboard/widget/branches_tree_view.dart';
+import 'package:aurora_git/repo_dashboard/widget/icon_button_fixed_width.dart';
 import 'package:aurora_git/shared/global_variables.dart';
 import 'package:aurora_git/shared/window_buttons.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -39,106 +42,42 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
             ),
             Row(
               children: [
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.drill_down,
+                  text: 'Fetch',
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.drill_down),
-                          Text('Fetch'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(width: 8),
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.drill_down_solid,
+                  text: 'Pull',
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.drill_down_solid),
-                          Text('Pull'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(width: 8),
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.upload,
+                  text: 'Push',
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.upload),
-                          Text('Push'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(width: 40),
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.archive,
+                  text: 'Stash',
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.archive),
-                          Text('Stash'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
                 const Expanded(child: SizedBox()),
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.share,
+                  text: 'Open in',
+                  size: const Size(56, 40),
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 56,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.share),
-                          Text('Open in'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(width: 8),
-                IconButton(
+                IconButtonFixedWidth(
+                  iconData: FluentIcons.command_prompt,
+                  text: 'Terminal',
+                  size: const Size(56, 40),
                   onPressed: () {},
-                  icon: const SizedBox(
-                    width: 56,
-                    height: 40,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(FluentIcons.command_prompt),
-                          Text('Terminal'),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
@@ -169,6 +108,36 @@ class _RepoDashboardPageState extends State<RepoDashboardPage> {
             body: Container(),
           ),
           PaneItemSeparator(),
+          BranchesTreeView(
+            folderOrBranchList: [
+              BranchFolderStructure(
+                name: 'feature',
+                children: [
+                  BranchFolderStructure(name: 'selected1'),
+                  BranchFolderStructure(name: 'selected2'),
+                  BranchFolderStructure(
+                    name: 'selected3',
+                    children: [
+                      BranchFolderStructure(name: 'selected 3.5'),
+                    ],
+                  ),
+                ],
+              ),
+              BranchFolderStructure(
+                name: 'feature2',
+                children: [
+                  BranchFolderStructure(name: 'selected1'),
+                  BranchFolderStructure(name: 'selected2'),
+                  BranchFolderStructure(
+                    name: 'selected3',
+                    children: [
+                      BranchFolderStructure(name: 'selected 4'),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );
